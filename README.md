@@ -6,7 +6,7 @@ I work at the intersection of traditional telecom engineering and modern platfor
 
 ## 🔭 What I work with
 
-**Voice / UC Platforms:** Cisco CUCM, Unity Connection, UCCX, Expressway, Webex Calling, Microsoft Teams Phone (Direct Routing), Genesys Cloud CX, Amazon Connect
+**Voice / UC Platforms:** Cisco CUCM, Unity Connection, UCCX, Expressway, Webex Calling, Microsoft Teams Phone (Direct Routing), Genesys Cloud CX, Amazon Connect (Lex, Lambda, DynamoDB)
 
 **SBC & SIP:** Ribbon, AudioCodes, Cisco CUBE, Oracle SBC, Kamailio, rtpengine, Asterisk
 
@@ -21,6 +21,10 @@ I work at the intersection of traditional telecom engineering and modern platfor
 **[sip-lab-kamailio-rtpengine](https://github.com/amanchikalapudi/sip-lab-kamailio-rtpengine)** — A containerized home lab replicating an access-SBC-in-front-of-core-PBX topology. Kamailio handles SIP proxy/registration, rtpengine anchors RTP media, and Asterisk runs as the softswitch core — all in Docker on a Raspberry Pi 5. Built to get hands-on with the same architectural pattern used by production SBC platforms.
 
 **[cisco-axl-automation](https://github.com/amanchikalapudi/cisco-axl-automation)** — Python and PowerShell scripts against the Cisco AXL API for UC configuration provisioning, reporting, and validation, cutting manual validation effort in production environments.
+
+**[amazon-connect-toolkit](https://github.com/amanchikalapudi/amazon-connect-toolkit)** — Contact flow patterns and Lambda integrations for Amazon Connect, including Lex intent routing, DynamoDB caller lookups, and fallback handling — built from hands-on Connect administration work.
+
+**[genesys-cloud-migration](https://github.com/amanchikalapudi/genesys-cloud-migration)** — Documentation and planning artifacts from leading a full UCCX-to-Genesys Cloud CX migration, covering routing redesign, queue mapping, and IVR/flow migration methodology.
 
 ## 📫 Reach me
 
