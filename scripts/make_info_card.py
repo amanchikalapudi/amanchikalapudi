@@ -53,13 +53,20 @@ HOST = "github"
 
 
 def rain_column_svg(rng: random.Random, x: float, line_h: float, clip_h: float) -> str:
+    # All columns share one <animateTransform> clock (see the shared "steps"
+    # values below), so the bright-glyph phase/period must be randomized per
+    # column - otherwise every column's bright glyph lines up on the same
+    # row at the same time, flashing one legible band instead of scattered
+    # rain. See scripts/render_heatmap_svg.py for the same fix, in detail.
     n = int((clip_h * 2) // line_h) + 2
+    phase = rng.randrange(0, 8)
+    period = rng.randint(5, 9)
     parts = [f'<text x="0" y="0" font-family="SFMono-Regular,Consolas,monospace" font-size="{line_h - 3:.0f}" text-anchor="middle">']
     for i in range(n):
         ch = xml_escape(rng.choice(RAIN_CHARSET))
-        bright = (i % 6 == 0)
+        bright = ((i + phase) % period == 0)
         fill = GREEN_BRIGHT if bright else "#1c6b3c"
-        opacity = "0.9" if bright else "0.4"
+        opacity = "0.65" if bright else "0.22"
         dy = f"{line_h:.0f}" if i else "0"
         parts.append(f'<tspan x="0" dy="{dy}" fill="{fill}" opacity="{opacity}">{ch}</tspan>')
     parts.append("</text>")
@@ -82,7 +89,7 @@ def matrix_rain(seed: int, w: int, h: int, col_spacing: int = 14, line_h: int = 
     body = "".join(rain_column_svg(rng, i * col_spacing + col_spacing / 2, line_h, h) for i in range(cols))
     return (
         f'<clipPath id="cardRainClip"><rect x="0" y="0" width="{w}" height="{h}"/></clipPath>'
-        f'<g clip-path="url(#cardRainClip)" opacity="0.35">{body}</g>'
+        f'<g clip-path="url(#cardRainClip)" opacity="0.22">{body}</g>'
     )
 
 

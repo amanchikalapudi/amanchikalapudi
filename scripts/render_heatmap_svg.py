@@ -79,14 +79,25 @@ def month_labels(days: list[dict]) -> list[tuple[int, str]]:
 
 
 def rain_column_svg(rng: random.Random, x: float, height: float, line_h: float, clip_h: float) -> str:
-    """One vertical stream of glyphs, tall enough to loop seamlessly."""
+    """One vertical stream of glyphs, tall enough to loop seamlessly.
+
+    Every column shares one <animateTransform> clock (see rain_translate_anim)
+    so dozens of columns cost one discrete step instead of dozens of
+    continuously-repainted ones. That means every column is offset by the
+    exact same amount at every instant — so the "bright head" glyph must be
+    placed at a per-column-random phase/period, or every column's bright
+    glyph lines up on the same row at the same time and the whole panel
+    flashes a single legible horizontal band instead of scattered rain.
+    """
     n = int((clip_h * 2) // line_h) + 2
+    phase = rng.randrange(0, 8)
+    period = rng.randint(5, 9)
     parts = [f'<text x="0" y="0" font-family="SFMono-Regular,Consolas,monospace" font-size="{line_h - 3:.0f}" text-anchor="middle">']
     for i in range(n):
         ch = xml_escape(rng.choice(RAIN_CHARSET))
-        bright = (i % 6 == 0)
+        bright = ((i + phase) % period == 0)
         fill = GREEN_BRIGHT if bright else "#1c6b3c"
-        opacity = "0.9" if bright else "0.4"
+        opacity = "0.7" if bright else "0.28"
         dy = f'{line_h:.0f}' if i else "0"
         parts.append(f'<tspan x="0" dy="{dy}" fill="{fill}" opacity="{opacity}">{ch}</tspan>')
     parts.append("</text>")
@@ -127,7 +138,7 @@ def matrix_rain(seed: int, x: int, y: int, w: int, h: int, col_spacing: int = 14
         body.append(rain_column_svg(rng, cx, h, line_h, h))
     return (
         f'<clipPath id="{clip_id}"><rect x="0" y="0" width="{w}" height="{h}"/></clipPath>'
-        f'<g transform="translate({x},{y})" clip-path="url(#{clip_id})" opacity="0.5">'
+        f'<g transform="translate({x},{y})" clip-path="url(#{clip_id})" opacity="0.4">'
         + "".join(body)
         + "</g>"
     )
