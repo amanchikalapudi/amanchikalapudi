@@ -21,7 +21,7 @@ OUTPUT_PATH = REPO_ROOT / "assets" / "info_card.svg"
 
 # Must match the meme gif's display height in README.md exactly.
 CARD_WIDTH = 420
-CARD_HEIGHT = 380
+CARD_HEIGHT = 320
 
 BG = "#0d1117"
 PANEL_BORDER = "#30363d"

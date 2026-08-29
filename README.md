@@ -6,8 +6,8 @@
 
 <table>
 <tr>
-<td align="center"><img src="assets/meme.gif" width="320" height="380" alt="placeholder meme, swap in your own" /></td>
-<td align="center"><img src="assets/info_card.svg" width="420" height="380" alt="neofetch style info card, animated" /></td>
+<td align="center"><img src="assets/meme.gif" width="320" height="320" alt="GitHub's Mona, shipping it" /></td>
+<td align="center"><img src="assets/info_card.svg" width="420" height="320" alt="neofetch style info card, animated" /></td>
 </tr>
 </table>
 
