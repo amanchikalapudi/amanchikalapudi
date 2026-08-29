@@ -1,3 +1,30 @@
+<div align="center">
+
+<img src="assets/heatmap.svg" width="734" alt="amanchikalapudi contribution activity, animated" />
+
+<br/>
+
+<table>
+<tr>
+<td align="center"><img src="assets/meme.gif" width="320" height="380" alt="placeholder meme, swap in your own" /></td>
+<td align="center"><img src="assets/info_card.svg" width="420" height="380" alt="neofetch style info card, animated" /></td>
+</tr>
+</table>
+
+<br/>
+
+<strong>
+<a href="https://github.com/amanchikalapudi">GitHub</a>
+&nbsp;·&nbsp;
+<a href="https://www.linkedin.com/in/amanchikalapudi/">LinkedIn</a>
+&nbsp;·&nbsp;
+<a href="mailto:avinash.manchikalapudi93@gmail.com">Email</a>
+</strong>
+
+</div>
+
+<br/>
+
 # Hi, I'm Avinash 👋
 
 Senior Voice / VoIP & Unified Communications Engineer with 8+ years designing, deploying, and operating enterprise voice infrastructure at 24/7 availability for 10,000+ users — Cisco CUCM, Session Border Controllers, SIP trunking, and cloud voice (Webex Calling, Microsoft Teams Phone Direct Routing).
@@ -30,3 +57,7 @@ I work at the intersection of traditional telecom engineering and modern platfor
 
 - LinkedIn: [linkedin.com/in/amanchikalapudi](https://www.linkedin.com/in/amanchikalapudi/)
 - Email: avinash.manchikalapudi93@gmail.com
+
+---
+
+<sub>The contribution heatmap and info card above are self-hosted SVGs, animated with SMIL (no third-party widgets, no tokens) and refreshed daily by <a href=".github/workflows/update-profile-art.yml">a GitHub Action</a>. Swap <code>assets/meme.gif</code> for your own. See <a href="scripts/">scripts/</a> for how they're generated.</sub>
