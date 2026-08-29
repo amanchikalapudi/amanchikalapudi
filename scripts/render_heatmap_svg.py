@@ -284,7 +284,10 @@ def build_svg(data: dict) -> str:
     height = TITLEBAR_H + MONTH_LABEL_H + GRID_TOP_PAD + 7 * PITCH - GAP + FOOTER_H + BOTTOM_PAD
 
     grid_top = TITLEBAR_H + MONTH_LABEL_H + GRID_TOP_PAD
-    rain_h = height - TITLEBAR_H
+    grid_bottom = grid_top + 7 * PITCH - GAP
+    # Rain is confined to the grid band only, not the footer (typed total +
+    # legend), so it never visually clutters that text.
+    rain_h = grid_bottom - TITLEBAR_H + 6
 
     rng = random.Random(1337)
 
@@ -298,6 +301,9 @@ def build_svg(data: dict) -> str:
 
     svg.append(titlebar(width, f"{username} — contributions.sh"))
     svg.append(matrix_rain(seed=42, x=0, y=TITLEBAR_H, w=width, h=rain_h))
+    # Opaque backing behind the footer row so the grid-area rain never shows
+    # through underneath the typed total / legend text.
+    svg.append(f'<rect x="0" y="{grid_bottom}" width="{width}" height="{height - grid_bottom}" fill="{BG}"/>')
 
     # weekday labels (Mon/Wed/Fri)
     for row, label in ((1, "Mon"), (3, "Wed"), (5, "Fri")):
